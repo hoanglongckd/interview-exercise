@@ -1,1 +1,1 @@
-This is where I save all my exercise that I've learned from this course: Master the Coding Interview: Big Tech (FAANG) Interviews[](https://www.udemy.com/course/master-the-coding-interview-big-tech-faang-interviews/).
+This is where I save all my exercise that I've learned from this course: [Master the Coding Interview: Big Tech (FAANG) Interviews](https://www.udemy.com/course/master-the-coding-interview-big-tech-faang-interviews/).
