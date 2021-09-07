@@ -1,39 +1,31 @@
 package _2_my_optimal_solution
 
 func FirstTwoSum(nums []int, target int) []int {
-	type numProp struct {
-		exist bool
-		index int
-	}
-	visitedNums := map[int]numProp{}
+	visitedNums := map[int]int{}
 
 	for i := 0; i < len(nums); i++ {
-		numberToFind := target - nums[i]
-		currentMapVal := visitedNums[numberToFind]
+		currentNum := nums[i]
+		numberToFind := target - currentNum
 
-		if currentMapVal.exist {
-			return []int{currentMapVal.index, i}
+		if currentMapVal, ok := visitedNums[numberToFind]; ok {
+			return []int{currentMapVal, i}
 		}
-		visitedNums[nums[i]] = numProp{exist: true, index: i}
+		visitedNums[currentNum] = i
 	}
 	return []int{}
 }
 
 func SecondTwoSum(nums []int, target int) []int {
-	type numProp struct {
-		exist bool
-		index int
-	}
-	visitedNums := map[int]numProp{}
+	visitedNums := map[int]int{}
 
 	for i := 0; i < len(nums); i++ {
-		currentMapVal := visitedNums[nums[i]]
+		currentNum := nums[i]
 
-		if currentMapVal.exist {
-			return []int{currentMapVal.index, i}
+		if currentMapVal, ok := visitedNums[currentNum]; ok {
+			return []int{currentMapVal, i}
 		}
 		numberToFind := target - nums[i]
-		visitedNums[numberToFind] = numProp{exist: true, index: i}
+		visitedNums[numberToFind] = i
 	}
 	return []int{}
 }
