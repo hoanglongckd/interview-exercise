@@ -2,27 +2,33 @@ package main
 
 func findMaxArea(height []int) int {
 	maxArea := 0
+	p1 := 0
+	p2 := len(height) - 1
 
-	if heightLens := len(height); heightLens > 1 {
-		p1 := 0
-		p2 := heightLens - 1
+	for p1 < p2 {
+		width := p2 - p1
+		length := min(height[p1], height[p2])
+		maxArea = max(maxArea, width*length)
 
-		for p1 < p2 {
-			width := p2 - p1
-			length := 0
-			if height[p1] > height[p2] {
-				length = height[p2]
-				p2--
-			} else {
-				length = height[p1]
-				p1++
-			}
-			curArea := width * length
-			if curArea > maxArea {
-				maxArea = curArea
-			}
+		if height[p1] > height[p2] {
+			p2--
+		} else {
+			p1++
 		}
 	}
-
 	return maxArea
+}
+
+func min(n1, n2 int) int {
+	if n1 > n2 {
+		return n2
+	}
+	return n1
+}
+
+func max(n1, n2 int) int {
+	if n1 > n2 {
+		return n1
+	}
+	return n2
 }
