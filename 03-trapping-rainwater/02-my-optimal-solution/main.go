@@ -9,9 +9,7 @@ func trap(height []int) int {
 		rightMax := rightHeight[idx+1]
 		minHeight := min(leftMax, rightMax)
 		totalWater += positive(minHeight - val)
-		if val > leftMax {
-			leftMax = val
-		}
+		leftMax = max(val, leftMax)
 	}
 	return totalWater
 }
