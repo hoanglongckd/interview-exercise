@@ -4,15 +4,15 @@ func backspaceCompare(s string, t string) bool {
 	finalStrOfS := getFinalString(s)
 	finalStrOfT := getFinalString(t)
 
-	if len(finalStrOfS) == len(finalStrOfT) {
-		for idx, char := range finalStrOfS {
-			if char != rune(finalStrOfT[idx]) {
-				return false
-			}
-		}
-		return true
+	if len(finalStrOfS) != len(finalStrOfT) {
+		return false
 	}
-	return false
+	for idx, char := range finalStrOfS {
+		if char != rune(finalStrOfT[idx]) {
+			return false
+		}
+	}
+	return true
 }
 
 func getFinalString(original string) string {
