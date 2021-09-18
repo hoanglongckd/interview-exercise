@@ -11,28 +11,20 @@ func trap(height []int) int {
 		leftVal := height[left]
 		rightVal := height[right]
 		if leftVal <= rightVal {
-			totalWater += positive(leftMax - leftVal)
-			leftMax = max(leftMax, leftVal)
+			if leftVal > leftMax {
+				leftMax = leftVal
+			} else {
+				totalWater += leftMax - leftVal
+			}
 			left++
 		} else {
-			totalWater += positive(rightMax - rightVal)
-			rightMax = max(rightMax, rightVal)
+			if rightVal > rightMax {
+				rightMax = rightVal
+			} else {
+				totalWater += rightMax - rightVal
+			}
 			right--
 		}
 	}
 	return totalWater
-}
-
-func max(i, j int) int {
-	if i > j {
-		return i
-	}
-	return j
-}
-
-func positive(i int) int {
-	if i > 0 {
-		return i
-	}
-	return 0
 }
