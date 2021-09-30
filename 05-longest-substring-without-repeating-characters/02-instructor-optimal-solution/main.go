@@ -9,15 +9,10 @@ func lengthOfLongestSubstring(s string) int {
 	for rightPtr < len(s) {
 		rightChar := s[rightPtr]
 
-		if idx, ok := visitedChars[rightChar]; ok {
-			if leftPtr > idx {
-				longestSubStr = max(longestSubStr, rightPtr-leftPtr+1)
-			} else {
-				leftPtr = idx + 1
-			}
-		} else {
-			longestSubStr = max(longestSubStr, rightPtr-leftPtr+1)
+		if idx, ok := visitedChars[rightChar]; ok && leftPtr <= idx {
+			leftPtr = idx + 1
 		}
+		longestSubStr = max(longestSubStr, rightPtr-leftPtr+1)
 		visitedChars[rightChar] = rightPtr
 		rightPtr++
 	}
